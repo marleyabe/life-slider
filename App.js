@@ -1,112 +1,269 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import Slider from '@react-native-community/slider';
+import { captureScreen } from "react-native-view-shot";
+export default class App extends Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      defaultValue: 0,
+      teste: 0
+    }
+  }
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  render(){
+    const sliderHeight = 35
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    return(
+      
+      <View style={styles.component}>
+        <View style={styles.border}>
+          <View style={styles.container}>
+            <View style={styles.menu}>
+              <Text style={styles.title}>App Design</Text>
+              <View style={styles.icons}>
+                <TouchableOpacity
+                  onPress={async () => {
+                    this.setState({defaultValue: 1})
+                    await new Promise(resolve => setTimeout(resolve, 1)) // 0.01
+                    this.setState({defaultValue: 0})
+                  }}>
+                  <Image
+                    style={styles.icon}
+                    source={require('./src/img/refresh.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.classification}>
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Feminino</Text>
+                <Text style={styles.item}>Masculino</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Jovem</Text>
+                <Text style={styles.item}>Experiente</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Simples</Text>
+                <Text style={styles.item}>Detalhado</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Amigável</Text>
+                <Text style={styles.item}>Autoridade</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Classico</Text>
+                <Text style={styles.item}>Moderno</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Economico</Text>
+                <Text style={styles.item}>Caro</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Divertido</Text>
+                <Text style={styles.item}>Sério</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Exclusivo</Text>
+                <Text style={styles.item}>Popular</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Industrial</Text>
+                <Text style={styles.item}>Natural</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Delicado</Text>
+                <Text style={styles.item}>Forte</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+              {/* ------- */}
+              <View style={styles.classificationItem}>
+                <Text style={styles.item}>Casual</Text>
+                <Text style={styles.item}>Elegante</Text>
+              </View>
+              <Slider
+                style={{height: sliderHeight, width: "110%", right: 0, left: -16}}
+                minimumValue={-3}
+                maximumValue={3}
+                value={this.state.defaultValue}
+                step={1}
+                minimumTrackTintColor="lightgrey"
+                maximumTrackTintColor="grey"
+                thumbTintColor="lightgreen"
+              />
+            </View>
+          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+      </View>
+      
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  component : {
+    backgroundColor: "#fff",
+    width: "100%",
+    height: "100%",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  border: {
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 20,
+    width: "90%",
+    height: "95%",
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  sectionDescription: {
-    marginTop: 8,
+  container: {
+    width: "90%",
+    height: "95%",
+  },
+  menu: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color: "black",
+  },
+  icons: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  icon: {
+    width: 25,
+    height: 25,
+    marginLeft: 15
+  },
+  classification: {
+    marginTop: "7%",
+    width: "100%",
+    height: "92%",
+    
+  },
+  classificationItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  item: {
     fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+    fontWeight: 'bold',
+    color: 'black'
+  }
+})
